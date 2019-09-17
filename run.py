@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 app.config['SECRET_KEY'] = '6e77bdc3d147ec81761e0df80b1f5a62'
 app.config["MONGO_DBNAME"] = 'TheBlogsApp'
-app.config["MONGO_URI"] = 'mongodb+srv://root:r00tUser@myfirstcluster-6m7cl.mongodb.net/TheBlogsApp?retryWrites=true&w=majority'
+app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
 
 Markdown(app)
 mongo = PyMongo(app)
