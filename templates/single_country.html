@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="list-group">
+        <div class="list-group-item list-group-item-action flex-column align-items-start d-flex w-100 justify-content-between">
+            <h1>{{country.country_name}}</h1>
+            <div class="country-details">
+                <h4 class="country-detail-header">County Location</h4>
+                <p>{{ country.country_location }}</p>
+            </div>
+            <hr>
+            <div class="country-details">
+                <h4 class="country-detail-header">Currency</h4>
+                <p>{{ country.country_currency }}</p>
+            </div>
+            <hr>
+            <div class="country-details">
+                <h4 class="country-detail-header">Language</h4>
+                <p>{{ country.country_language }}</p>
+            </div>
+            <hr>
+            <div class="country-details">
+                <h4 class="country-detail-header">Risk</h4>
+                <p>{{ country.country_risk }}</p>
+            </div>
+            <hr>
+            <div class="country-details">
+                <h4 class="country-detail-header">Injections Required?</h4>
+                <p>{{ country.injections }}</p>
+            </div>
+            <hr>
+
+            <h4 class="single-country-reasons-header">Reasons to Go and Things to See</h4>
+            <p>{{ country.reasons_to_go | markdown }}</p>
+            <button type="button" data-toggle="modal" data-target="#myModal" class="delete-button waves-effect waves-light btn btn-delete btn_small">Delete</button>
+            <a href="{{url_for('edit_country', country_id=country._id)}}" class="waves-effect waves-light btn btn-edit btn_small">Edit</a>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="myModalLabel">Delete</h3>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this country?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="waves-effect waves-light btn btn-edit btn_small" data-dismiss="modal">No</button>
+                <a href="{{url_for('delete_country', country_id=country._id)}}"><button  type="button" class="delete-button waves-effect waves-light btn btn-delete btn_small">Yes</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
