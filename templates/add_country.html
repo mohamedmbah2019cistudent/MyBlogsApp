@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h3>Add Country</h3>
+    <div class="row">
+        <form action="{{ url_for('insert_country') }}" method="POST" class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix fas fa-clipboard-list"></i>
+                    <input id="country_name" name="country_name" type="text" class="validate" maxlength="17" required>
+                    <label>Country Name (Max 17 Characters)</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix fas fa-globe-europe"></i>
+                    <select id="country_location" name="country_location">
+                        <option value="" disabled selected>Country Location</option>
+                        {% for location in locations %}
+                            <option value="{{location.country_location}}">{{location.country_location}}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Country Location</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix fas fa-money-bill-alt"></i>
+                    <input id="country_currency" name="country_currency" type="text" class="validate" required>
+                    <label>Country Currency</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix fas fa-ban"></i>
+                    <select id="country_risk" name="country_risk">
+                        <option value="" disabled selected>Country Risk (Low, Medium or High)</option>
+                        {% for risk in risks %}
+                            <option value="{{risk.country_risk}}">{{risk.country_risk}}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Country Risk (Low, Medium or High)</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix fas fa-language"></i>
+                    <input id="country_language" name="country_language" type="text" class="validate" required>
+                    <label>Country Language</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix fas fa-syringe"></i>
+                    <input id="injections" name="injections" type="text" class="validate" required>
+                    <label>Injections Required?</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix fas fa-landmark"></i></i>
+                    <label>Reasons to Go</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea type="textarea" name="reasons_to_go" id="editor" class="materialize-textarea" required></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <button class="waves-effect waves-light btn btn-countries" type="submit">Add Country
+                    <i class="material-icons right">playlist_add</i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

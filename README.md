@@ -1,6 +1,6 @@
 # Code Institute
 
-Welcome USER_NAME,
+Welcome Mohamed Marifa Bah ,
 
 We have preinstalled all of the tools you need to get started.
 

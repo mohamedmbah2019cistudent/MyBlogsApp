@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="carousel carousel-slider center" data-indicators="true">
+        <div class="carousel-fixed-item center">
+            <a href="{{url_for('sign_up')}}"class="waves-effect waves-light btn">Sign Up</a>
+        </div>
+        <div class="carousel-item carousel-text bg-img-one">
+            <h1>Welcome to MyBlogsApp</h1>
+            <h3 class="carousel-text">The blog you need for all your travel needs</h3>
+        </div>
+        <div class="carousel-item carousel-text bg-img-two">
+            <h1>Articles on Travel</h1>
+            <h3 class="carousel-text">Read articles by other adventurers, and write your own</h3>
+        </div>
+        <div class="carousel-item carousel-text bg-img-three">
+            <h1>Wishlist</h1>
+            <h3 class="carousel-text">Add countries to your Travel Wish List</h3>
+        </div>
+        <div class="carousel-item carousel-text bg-img-four">
+            <h1>Adventures</h1>
+            <h3 class="carousel-text">Create Your Own Adventures!</h3>
+        </div>
+    </div>
+{% endblock %}
+
+
