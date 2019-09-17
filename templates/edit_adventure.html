@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h3>Update Adventure</h3>
+    <div class="row">
+        <form action="{{ url_for('update_adventure', adventure_id=adventure._id) }}" method="POST" class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix fas fa-book"></i>
+                    <input id="adventure_name" name="adventure_name" type="text" class="validate" minlength="5" value="{{adventure.adventure_name}}" required>
+                    <label>Adventure Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <label for="adventures"><p class="h5">Choose Countries to Visit</p></label>
+                <select multiple id="countries" name="countries" size="10" required />
+                    {% for location in locations %}
+                        <optgroup label="{{ location.country_location | title }}">
+                            {% for country in countries %}
+                                {% if location.country_location in country.country_location %}
+                                    <option value="{{country.country_name}}">{{country.country_name}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </optgroup>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix fas fa-calendar-week"></i>
+                    <input type="text" id="start_date" name="start_date" class="datepicker" value="{{adventure.start_date}}">
+                    <label for="icon_prefix">Start Date</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix fas fa-money-bill-alt"></i>
+                    <input type="text" id="budget" name="budget" class="validate" value="{{adventure.budget}}">
+                    <label>Budget (£)</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix fas fa-stopwatch"></i>
+                    <input type="text" id="duration" name="duration" class="validate" value="{{adventure.duration}}">
+                    <label>Duration (Days)</label>
+                </div>
+            </div>
+            <div class="row">
+                <button class="waves-effect waves-light btn btn-adventures" type="submit">Update Adventure
+                    <i class="material-icons right">playlist_add</i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
